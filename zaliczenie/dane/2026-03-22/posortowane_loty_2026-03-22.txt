@@ -1,0 +1,86 @@
+Aberdeen: - cze 23 243zł, cze 24 256zł, cze 28 307zł
+Agadir: - cze 26 559zł
+Alicante: - cze 23 338zł, cze 24 264zł, cze 25 333zł, cze 26 469zł, cze 27 599zł, cze 28 590zł, cze 29 527zł
+Amman Jordania: - cze 26 225zł, cze 29 310zł
+Ankona: - cze 24 107zł, cze 25 168zł, cze 28 230zł
+Ateny: - cze 23 307zł, cze 24 362zł, cze 25 465zł, cze 26 490zł, cze 27 537zł, cze 28 478zł
+Barcelona-El Prat: - cze 23 260zł, cze 24 162zł, cze 25 288zł, cze 26 365zł, cze 27 650zł, cze 28 706zł, cze 29 208zł
+Barcelona-Girona: - cze 23 230zł, cze 24 426zł, cze 25 226zł, cze 27 345zł, cze 28 348zł
+Bari: - cze 23 217zł, cze 24 175zł, cze 25 188zł, cze 26 226zł, cze 27 546zł, cze 28 345zł, cze 29 256zł
+Belfast-International: - cze 25 136zł, cze 29 621zł
+Birmingham: - cze 23 257zł, cze 24 141zł, cze 25 192zł, cze 26 249zł, cze 27 205zł, cze 28 627zł, cze 29 333zł
+Bolonia: - cze 23 107zł, cze 24 111zł, cze 25 111zł, cze 26 304zł, cze 27 313zł, cze 28 352zł, cze 29 357zł
+Bournemouth: - cze 24 196zł, cze 27 209zł, cze 28 128zł
+Bristol: - cze 23 247zł, cze 24 238zł, cze 25 196zł, cze 26 205zł, cze 27 368zł, cze 28 307zł, cze 29 311zł
+Bruksela-Charleroi: - cze 23 95zł, cze 24 129zł, cze 25 95zł, cze 26 156zł, cze 27 156zł, cze 28 338zł, cze 29 541zł
+Bucharest Baneasa: - cze 23 78zł, cze 24 85zł, cze 26 136zł, cze 28 164zł
+Budapeszt: - cze 25 112zł, cze 28 113zł
+Burgas: - cze 23 234zł, cze 24 266zł, cze 25 275zł, cze 26 356zł, cze 27 401zł, cze 28 357zł, cze 29 515zł
+Cagliari: - cze 23 348zł, cze 25 345zł, cze 26 388zł, cze 27 431zł, cze 28 465zł, cze 29 560zł
+Castellon (Walencja): - cze 25 217zł, cze 29 269zł
+Catania: - cze 23 228zł, cze 24 208zł, cze 25 255zł, cze 26 283zł, cze 27 487zł, cze 28 424zł, cze 29 211zł
+Chania (Kreta): - cze 24 418zł, cze 25 590zł, cze 26 482zł, cze 28 471zł
+Dublin: - cze 23 701zł, cze 24 253zł, cze 25 241zł, cze 26 456zł, cze 27 627zł, cze 28 778zł, cze 29 524zł
+Dubrownik: - cze 23 104zł, cze 24 102zł, cze 26 270zł, cze 29 183zł
+East Midlands: - cze 24 139zł, cze 25 179zł, cze 26 166zł, cze 28 414zł, cze 29 363zł
+Edynburg: - cze 23 300zł, cze 24 352zł, cze 25 309zł, cze 26 507zł, cze 27 357zł, cze 28 346zł, cze 29 193zł
+Eindhoven: - cze 23 177zł, cze 24 215zł, cze 25 149zł, cze 26 177zł, cze 27 179zł, cze 28 300zł, cze 29 533zł
+Faro: - cze 23 372zł, cze 24 349zł, cze 27 503zł, cze 28 554zł
+Fuerteventura: - cze 25 743zł
+Gdańsk: - cze 23 69zł, cze 24 76zł, cze 25 108zł, cze 26 171zł, cze 28 149zł, cze 29 132zł
+Glasgow: - cze 23 188zł, cze 24 192zł, cze 27 374zł, cze 29 320zł
+Gran Canaria: - cze 23 627zł
+Göteborg-Landvetter: - cze 23 133zł, cze 24 295zł, cze 26 388zł, cze 28 295zł, cze 29 186zł
+Kopenhaga: - cze 23 95zł, cze 24 95zł, cze 25 191zł, cze 26 294zł, cze 27 95zł, cze 28 134zł, cze 29 116zł
+Korfu: - cze 24 226zł, cze 25 213zł, cze 26 324zł, cze 28 508zł, cze 29 290zł
+Lamezia: - cze 24 320zł, cze 27 331zł, cze 28 456zł, cze 29 183zł
+Leeds/Bradford: - cze 23 226zł, cze 24 352zł, cze 25 266zł, cze 26 322zł, cze 27 312zł, cze 28 467zł, cze 29 275zł
+Lisbon: - cze 26 524zł, cze 28 790zł
+Liverpool: - cze 23 188zł, cze 24 102zł, cze 25 128zł, cze 26 119zł, cze 27 316zł, cze 28 217zł, cze 29 405zł
+Londyn-Luton: - cze 23 107zł
+Londyn-Stansted: - cze 24 94zł, cze 25 132zł, cze 26 124zł, cze 27 177zł, cze 28 266zł, cze 29 352zł
+Lourdes: - cze 25 552zł, cze 29 1 242zł
+Madryt: - cze 23 418zł, cze 24 533zł, cze 25 697zł, cze 26 524zł, cze 27 760zł, cze 29 674zł
+Malaga: - cze 23 212zł, cze 24 328zł, cze 25 242zł, cze 27 424zł, cze 28 471zł, cze 29 476zł
+Malta: - cze 23 179zł, cze 24 154zł, cze 25 188zł, cze 26 273zł, cze 27 243zł, cze 28 307zł, cze 29 303zł
+Manchester: - cze 23 325zł, cze 24 418zł, cze 25 323zł, cze 26 183zł, cze 27 215zł, cze 28 682zł, cze 29 360zł
+Marrakesz: - cze 25 487zł, cze 28 559zł
+Marsylia: - cze 24 336zł, cze 26 264zł, cze 29 243zł
+Mediolan-Bergamo: - cze 23 85zł, cze 24 77zł, cze 25 153zł, cze 26 106zł, cze 27 108zł, cze 28 256zł, cze 29 269zł
+Mediolan-Malpensa: - cze 26 168zł, cze 29 521zł
+Memmingen: - cze 24 132zł, cze 27 196zł, cze 28 209zł
+Neapol: - cze 24 226zł, cze 25 307zł, cze 28 328zł
+Newcastle: - cze 23 226zł, cze 24 162zł, cze 27 228zł, cze 28 358zł, cze 29 294zł
+Olbia: - cze 24 316zł, cze 25 391zł, cze 26 503zł, cze 29 546zł
+Oslo-Torp: - cze 23 77zł, cze 24 64zł, cze 25 217zł, cze 26 77zł, cze 27 111zł, cze 28 171zł, cze 29 98zł
+Pafos: - cze 24 192zł, cze 26 325zł, cze 28 365zł, cze 29 365zł
+Palermo: - cze 23 288zł, cze 27 508zł, cze 29 414zł
+Palma: - cze 23 375zł, cze 24 485zł, cze 25 360zł, cze 27 466zł, cze 28 431zł, cze 29 567zł
+Paryż-Beauvais: - cze 23 95zł, cze 24 145zł, cze 25 154zł, cze 26 184zł, cze 27 205zł, cze 28 345zł, cze 29 445zł
+Perugia: - cze 26 166zł, cze 27 192zł, cze 29 205zł
+Pescara: - cze 23 239zł, cze 25 178zł, cze 26 175zł, cze 27 232zł
+Piza: - cze 23 171zł, cze 24 224zł, cze 25 299zł, cze 26 350zł, cze 27 576zł, cze 28 264zł, cze 29 493zł
+Podgorica: - cze 23 201zł, cze 24 197zł, cze 25 265zł, cze 26 236zł, cze 27 352zł, cze 29 315zł
+Porto: - cze 23 303zł, cze 24 233zł, cze 25 406zł, cze 28 905zł
+Praga: - cze 23 94zł, cze 24 79zł, cze 27 79zł
+Rimini: - cze 23 234zł, cze 24 230zł, cze 25 322zł, cze 26 312zł, cze 27 396zł, cze 29 467zł
+Rodos: - cze 24 333zł, cze 25 256zł, cze 27 589zł, cze 28 328zł, cze 29 322zł
+Ryga: - cze 23 115zł, cze 25 334zł, cze 26 430zł, cze 28 483zł, cze 29 254zł
+Rzym-Ciampino: - cze 23 126zł, cze 24 191zł, cze 25 257zł, cze 26 181zł, cze 27 257zł, cze 28 339zł, cze 29 220zł
+Saloniki: - cze 23 304zł, cze 24 346zł, cze 25 153zł, cze 26 330zł, cze 27 325zł, cze 28 445zł, cze 29 383zł
+Santorini: - cze 24 515zł, cze 27 676zł, cze 29 357zł
+Sewilla: - cze 23 239zł, cze 28 370zł
+Shannon: - cze 23 209zł, cze 25 222zł, cze 27 294zł, cze 29 286zł
+Sofia: - cze 24 90zł, cze 26 85zł, cze 27 158zł, cze 29 286zł
+Szczecin: - cze 24 69zł, cze 26 69zł, cze 29 101zł
+Sztokholm Arlanda: - cze 23 95zł, cze 24 168zł, cze 25 107zł, cze 26 210zł, cze 27 239zł, cze 28 361zł, cze 29 239zł
+Teneryfa-Południe: - cze 26 769zł
+Tirana: - cze 23 252zł, cze 24 209zł, cze 25 213zł, cze 26 252zł, cze 27 525zł, cze 28 375zł, cze 29 286zł
+Triest: - cze 24 121zł, cze 27 269zł, cze 29 200zł
+Tuluza: - cze 24 331zł, cze 26 365zł, cze 29 333zł
+Turyn: - cze 23 111zł, cze 27 299zł
+Varna: - cze 25 205zł, cze 27 279zł, cze 29 322zł
+Walencja: - cze 23 209zł, cze 25 269zł, cze 27 414zł, cze 28 352zł, cze 29 341zł
+Wenecja-Treviso: - cze 23 114zł, cze 24 103zł, cze 25 110zł, cze 26 201zł, cze 27 190zł, cze 28 225zł
+Wiedeń: - cze 24 85zł, cze 25 111zł, cze 27 264zł, cze 28 115zł
+Zadar: - cze 23 119zł, cze 24 111zł, cze 25 145zł, cze 26 235zł, cze 27 358zł, cze 28 280zł, cze 29 239zł
