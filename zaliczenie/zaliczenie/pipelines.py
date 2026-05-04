@@ -34,13 +34,11 @@ class BazaDanychPipeline:
             item.get('data'), 
             item.get('cena'), 
             item.get('waluta'), 
-            self.dzisiaj # Automatycznie stemplujemy dzisiejszą datą
+            self.dzisiaj 
         ))
         
-        # Zatwierdzamy zapis
         self.con.commit()
         return item
 
     def close_spider(self, spider):
-        # 4. Na koniec pracy grzecznie zamykamy połączenie z bazą
         self.con.close()

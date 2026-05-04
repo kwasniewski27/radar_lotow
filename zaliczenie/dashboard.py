@@ -54,7 +54,6 @@ def generuj_wnioski_ai(df, miasto):
         
     return tekst
 
-# --- SIDEBAR (Panel boczny z pamięcią wyboru) ---
 st.sidebar.header("Menu Główne")
 max_cena_bazy = int(df['cena'].max())
 max_cena = st.sidebar.slider("Maksymalna cena (PLN):", min_value = 0, max_value = max_cena_bazy, value = max_cena_bazy)
@@ -65,25 +64,21 @@ if st.sidebar.button("🏠 Ekran Główny", type="primary", use_container_width=
     st.rerun()
 st.sidebar.markdown("### ✈️ Wybierz kierunek:")
 
-# 4. LISTA MIAST
 lista_miast = sorted(df['kierunek'].unique().tolist())
 
-# Magiczny trik: jeśli jesteśmy na Ekranie Głównym, lista miast odznacza kropkę (index=None)
 startowy_index = lista_miast.index(aktualny_widok) if aktualny_widok in lista_miast else None
 
 wybrane_miasto_radio = st.sidebar.radio(
     "Kierunki:", 
     lista_miast, 
     index=startowy_index,
-    label_visibility="collapsed" # Ukrywamy domyślny, mały napis nad listą, bo użyliśmy ładnego Markdowna wyżej
+    label_visibility="collapsed" 
 )
 
-# 5. REAKCJA NA WYBÓR MIASTA
 if wybrane_miasto_radio and wybrane_miasto_radio != aktualny_widok:
     st.query_params["widok"] = wybrane_miasto_radio
     st.rerun()
 
-# --- GŁÓWNA STRONA ---
 if aktualny_widok == "Ekran Główny":
     st.title("Witamy w Radarze Okazji Lotniczych! 🌍")
     st.markdown("""
@@ -92,7 +87,7 @@ if aktualny_widok == "Ekran Główny":
     aby zaoszczędzić najwięcej pieniędzy.
     """)
     
-    st.markdown("### 📈 Nasza baza danych w liczbach:")
+    st.markdown("###  Nasza baza danych w liczbach:")
     
     df_budzet = df[df['cena'] <= max_cena]
     c1, c2, c3 = st.columns(3)

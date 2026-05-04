@@ -41,7 +41,7 @@ try:
     if not loty_wybrane.empty:
         najtanszy_wybrany = loty_wybrane.loc[loty_wybrane['cena'].idxmin()]
         data_lotu = najtanszy_wybrany['data_lotu'].strftime('%Y-%m-%d')
-        print(f"🎯 NAJLEPSZA OKAZJA DO {miasto.upper()}:")
+        print(f" NAJLEPSZA OKAZJA DO {miasto.upper()}:")
         print(f"Data lotu: {data_lotu} | Cena: {najtanszy_wybrany['cena']} {najtanszy_wybrany['waluta']} | Sprawdzono: {najtanszy_wybrany['data_sprawdzenia']}")
     else:
         print(f"Brak danych dla miasta: {miasto}")
