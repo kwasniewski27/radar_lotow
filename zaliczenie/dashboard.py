@@ -65,24 +65,25 @@ if st.sidebar.button("Ekran Główny", type="primary", use_container_width=True)
     st.query_params["widok"] = "Ekran Główny"
     st.rerun()
 st.sidebar.markdown("### Wybierz kierunek:")
-
-wyszukiwane_haslo = st_keyup(
-    "Szukaj miasta:", 
-    debounce=300, 
-    key="wyszukiwarka_miast"
-)
+with st.sidebar:
+    wyszukiwane_haslo = st_keyup(
+        "Szukaj miasta:", 
+        debounce=300, 
+        key="wyszukiwarka_miast"
+    )
 
 if wyszukiwane_haslo is None:
     wyszukiwane_haslo = ""
 wszystkie_miasta = sorted(df['kierunek'].unique().tolist())
+dostepne_miasta = sorted(df[df['cena'] <= max_cena]['kierunek'].unique().tolist())
 if wyszukiwane_haslo != "":
     try:
-        lista_miast = [miasto for miasto in wszystkie_miasta if re.search(wyszukiwane_haslo, miasto, re.IGNORECASE)]
+        lista_miast = [miasto for miasto in dostepne_miasta if re.search(wyszukiwane_haslo, miasto, re.IGNORECASE)]
     except re.error:
         st.sidebar.error("Błędne wyrażenie regularne.")
-        lista_miast = wszystkie_miasta
+        lista_miast = dostepne_miasta
 else:
-    lista_miast = wszystkie_miasta
+    lista_miast = dostepne_miasta
 if not lista_miast:
     st.sidebar.warning("Brak miast spełniających to kryterium.")
 else:
@@ -97,7 +98,8 @@ else:
 
     if wybrane_miasto_radio and wybrane_miasto_radio != aktualny_widok:
         st.query_params["widok"] = wybrane_miasto_radio
-        st.rerun()if aktualny_widok == "Ekran Główny":
+        st.rerun()
+if aktualny_widok == "Ekran Główny":
     st.title("Witamy w Radarze Okazji Lotniczych! 🌍")
     st.markdown("""
     Ten zaawansowany system analityczny codziennie monitoruje i zapisuje ceny biletów lotniczych.
@@ -109,76 +111,74 @@ else:
     
     df_budzet = df[df['cena'] <= max_cena]
     c1, c2, c3 = st.columns(3)
-    c1.metric("Zebrane loty", len(df_budzet))
-    c2.metric("Monitorowane kierunki", len(lista_miast))
+    c1.metric("Zebrane loty", len(df))
+    c2.metric("Monitorowane kierunki", len(wszystkie_miasta))
     if not df_budzet.empty:
-        c3.metric("Najtańszy lot w systemie", f"{df_budzet['cena'].min()} PLN")
+        c3.metric("Najtańszy lot w systemie", f"{int(df['cena'].min())} PLN")
     else:
         c3.metric("Najtańszy lot w systemie", "Brak")
         
     st.info("👈 **Aby rozpocząć, wybierz interesujący Cię kierunek z menu po lewej stronie!**")
     
     st.image("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", 
-             use_container_width=True)
+            use_container_width=True)
 else:
     wybrane_miasto = aktualny_widok
+    df_miasto_pelne = df[df['kierunek'] == wybrane_miasto]
     maska = (df['kierunek'] == wybrane_miasto) & (df['cena'] <= max_cena)
     filtered_df = df[maska]
-    st.title(f"📊 Analiza lotów do: {wybrane_miasto}")
-    if filtered_df.empty:
-        st.warning(f"Brak lotów do {wybrane_miasto} poniżej {max_cena} PLN. Spróbuj zwiększyć budżet!")
-    else:
-        col1, col2, col3, col4 = st.columns(4)
-        col1.metric("Najniższa cena", f"{int(filtered_df['cena'].min())} PLN")
-        col2.metric("Najwyższa cena", f"{int(filtered_df['cena'].max())} PLN") 
-        col3.metric("Średnia cena", f"{round(filtered_df['cena'].mean(), 2)} PLN")
-        col4.metric("Liczba lotów", len(filtered_df))
+    st.title(f"Analiza lotów do: {wybrane_miasto}")
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric("Najniższa cena", f"{int(df_miasto_pelne['cena'].min())} PLN")
+    col2.metric("Najwyższa cena", f"{int(df_miasto_pelne['cena'].max())} PLN") 
+    col3.metric("Średnia cena", f"{round(df_miasto_pelne['cena'].mean(), 2)} PLN")
+    col4.metric("Liczba lotów", len(df_miasto_pelne))
 
-        st.subheader("📉 Kiedy kupować?")
-        st.write("Wykres pokazuje, jak zmieniała się cena w zależności od tego, ile dni zostało do wylotu.")
+    st.subheader("Kiedy kupować?")
+    st.write("Wykres pokazuje, jak zmieniała się cena w zależności od tego, ile dni zostało do wylotu.")
 
-        fig = px.scatter(filtered_df, 
-                    x="dni_do_wylotu", 
-                    y="cena", 
-                    color="cena", 
-                    color_continuous_scale="Viridis",
-                    trendline="lowess",
-                    trendline_color_override="red", 
-                    template="plotly_dark", 
-                    labels={"dni_do_wylotu": "Dni do wylotu", "cena": "Cena (PLN)"},
-        )
-        fig.update_xaxes(autorange="reversed")
+    fig = px.scatter(filtered_df, 
+                x="dni_do_wylotu", 
+                y="cena", 
+                color="cena", 
+                color_continuous_scale="Viridis",
+                trendline="lowess",
+                trendline_color_override="red", 
+                template="plotly_dark", 
+                labels={"dni_do_wylotu": "Dni do wylotu", "cena": "Cena (PLN)"},
+    )
+    fig.update_xaxes(autorange="reversed")
 
-        tab1, tab2 = st.tabs(["Złote Okno", "Statystyki Tygodnia"])
+    tab1, tab2 = st.tabs(["Złote Okno", "Statystyki Tygodnia"])
 
-        with tab1:
-            st.plotly_chart(fig, width="stretch", key="wykres_glowny_viridis")
-            st.info("💡 Wskazówka: Linia trendu pokazuje 'Złote Okno'. Jeśli opada w lewo, oznacza to, że im bliżej lotu, tym jest drożej.")
-            st.markdown("---") 
-            with st.expander("🤖 Zapytaj Wirtualnego Analityka o poradę"):
-                wnioski = generuj_wnioski_ai(filtered_df, wybrane_miasto)
-                st.success(wnioski) 
-        with tab2:
-            st.subheader("📅 Statystyki dni tygodnia")
-            df_tydzien = df[df['kierunek'] == wybrane_miasto].copy()            
-            dni_pl = {'Monday': 'Poniedziałek', 'Tuesday': 'Wtorek', 'Wednesday': 'Środa', 
-                    'Thursday': 'Czwartek', 'Friday': 'Piątek', 'Saturday': 'Sobota', 'Sunday': 'Niedziela'}
-            
-            df_tydzien['dzien_lotu'] = df_tydzien['data_lotu'].dt.day_name().map(dni_pl)
-            kolejnosc = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela']
-            
-            srednie_dni = df_tydzien.groupby('dzien_lotu')['cena'].mean().reindex(kolejnosc).fillna(0).reset_index()
-            srednie_dni['etykieta'] = srednie_dni['cena'].apply(lambda x: "Brak lotów" if x == 0 else f"{x:.0f}")
-            
-            fig_bar = px.bar(srednie_dni, x='dzien_lotu', y='cena', 
-                            text='etykieta',
-                            color='cena', color_continuous_scale='Teal',
-                            labels={'dzien_lotu': 'Dzień wylotu', 'cena': 'Średnia cena (PLN)'})
-            
-            fig_bar.update_traces(textposition='outside')
-            max_cena_wykres = srednie_dni['cena'].max()
-            if max_cena_wykres > 0:
-                fig_bar.update_layout(yaxis=dict(range=[0, max_cena_wykres * 1.15]))
-            st.plotly_chart(fig_bar, width="stretch", key="wykres_slupkowy_dni")
+    with tab1:
+        st.plotly_chart(fig, width="stretch", key="wykres_glowny_viridis")
+        st.info("💡 Wskazówka: Linia trendu pokazuje 'Złote Okno'. Jeśli opada w lewo, oznacza to, że im bliżej lotu, tym jest drożej.")
+        st.markdown("---") 
+        with st.expander("🤖 Zapytaj Wirtualnego Analityka o poradę"):
+            wnioski = generuj_wnioski_ai(filtered_df, wybrane_miasto)
+            st.success(wnioski) 
+    with tab2:
+        st.subheader("📅 Statystyki dni tygodnia")
+        df_tydzien = df[df['kierunek'] == wybrane_miasto].copy()            
+        dni_pl = {'Monday': 'Poniedziałek', 'Tuesday': 'Wtorek', 'Wednesday': 'Środa', 
+                'Thursday': 'Czwartek', 'Friday': 'Piątek', 'Saturday': 'Sobota', 'Sunday': 'Niedziela'}
+        
+        df_tydzien['dzien_lotu'] = df_tydzien['data_lotu'].dt.day_name().map(dni_pl)
+        kolejnosc = ['Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela']
+        
+        srednie_dni = df_tydzien.groupby('dzien_lotu')['cena'].mean().reindex(kolejnosc).fillna(0).reset_index()
+        srednie_dni['etykieta'] = srednie_dni['cena'].apply(lambda x: "Brak lotów" if x == 0 else f"{x:.0f}")
+        
+        fig_bar = px.bar(srednie_dni, x='dzien_lotu', y='cena', 
+                        text='etykieta',
+                        color='cena', color_continuous_scale='Teal',
+                        labels={'dzien_lotu': 'Dzień wylotu', 'cena': 'Średnia cena (PLN)'})
+        
+        fig_bar.update_traces(textposition='outside')
+        max_cena_wykres = srednie_dni['cena'].max()
+        if max_cena_wykres > 0:
+            fig_bar.update_layout(yaxis=dict(range=[0, max_cena_wykres * 1.15]))
+        st.plotly_chart(fig_bar, width="stretch", key="wykres_slupkowy_dni")
 
         
