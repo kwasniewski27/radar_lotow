@@ -4,6 +4,7 @@ import sqlite3
 import plotly.express as px
 import os
 import re
+from st_keyup import st_keyup
 
 st.set_page_config(page_title="Radar Cen Lotów", layout="wide")
 
@@ -60,14 +61,21 @@ max_cena_bazy = int(df['cena'].max())
 max_cena = st.sidebar.slider("Maksymalna cena (PLN):", min_value = 0, max_value = max_cena_bazy, value = max_cena_bazy)
 st.sidebar.markdown("---")
 aktualny_widok = st.query_params.get("widok", "Ekran Główny")
-if st.sidebar.button("🏠 Ekran Główny", type="primary", use_container_width=True):
+if st.sidebar.button("Ekran Główny", type="primary", use_container_width=True):
     st.query_params["widok"] = "Ekran Główny"
     st.rerun()
-st.sidebar.markdown("### ✈️ Wybierz kierunek:")
+st.sidebar.markdown("### Wybierz kierunek:")
 
-wyszukiwane_haslo = st.sidebar.text_input("🔍 Szukaj miasta (np. 'lon' lub regex):", value="")
+wyszukiwane_haslo = st_keyup(
+    "Szukaj miasta:", 
+    debounce=300, 
+    key="wyszukiwarka_miast"
+)
+
+if wyszukiwane_haslo is None:
+    wyszukiwane_haslo = ""
 wszystkie_miasta = sorted(df['kierunek'].unique().tolist())
-if wyszukiwane_haslo:
+if wyszukiwane_haslo != "":
     try:
         lista_miast = [miasto for miasto in wszystkie_miasta if re.search(wyszukiwane_haslo, miasto, re.IGNORECASE)]
     except re.error:
@@ -75,7 +83,6 @@ if wyszukiwane_haslo:
         lista_miast = wszystkie_miasta
 else:
     lista_miast = wszystkie_miasta
-
 if not lista_miast:
     st.sidebar.warning("Brak miast spełniających to kryterium.")
 else:
@@ -90,8 +97,7 @@ else:
 
     if wybrane_miasto_radio and wybrane_miasto_radio != aktualny_widok:
         st.query_params["widok"] = wybrane_miasto_radio
-        st.rerun()
-if aktualny_widok == "Ekran Główny":
+        st.rerun()if aktualny_widok == "Ekran Główny":
     st.title("Witamy w Radarze Okazji Lotniczych! 🌍")
     st.markdown("""
     Ten zaawansowany system analityczny codziennie monitoruje i zapisuje ceny biletów lotniczych.
