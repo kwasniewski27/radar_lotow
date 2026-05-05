@@ -3,6 +3,7 @@ import pandas as pd
 import sqlite3
 import plotly.express as px
 import os
+import re
 
 st.set_page_config(page_title="Radar Cen Lotów", layout="wide")
 
@@ -64,21 +65,32 @@ if st.sidebar.button("🏠 Ekran Główny", type="primary", use_container_width=
     st.rerun()
 st.sidebar.markdown("### ✈️ Wybierz kierunek:")
 
-lista_miast = sorted(df['kierunek'].unique().tolist())
+wyszukiwane_haslo = st.sidebar.text_input("🔍 Szukaj miasta (np. 'lon' lub regex):", value="")
+wszystkie_miasta = sorted(df['kierunek'].unique().tolist())
+if wyszukiwane_haslo:
+    try:
+        lista_miast = [miasto for miasto in wszystkie_miasta if re.search(wyszukiwane_haslo, miasto, re.IGNORECASE)]
+    except re.error:
+        st.sidebar.error("Błędne wyrażenie regularne.")
+        lista_miast = wszystkie_miasta
+else:
+    lista_miast = wszystkie_miasta
 
-startowy_index = lista_miast.index(aktualny_widok) if aktualny_widok in lista_miast else None
+if not lista_miast:
+    st.sidebar.warning("Brak miast spełniających to kryterium.")
+else:
+    startowy_index = lista_miast.index(aktualny_widok) if aktualny_widok in lista_miast else None
 
-wybrane_miasto_radio = st.sidebar.radio(
-    "Kierunki:", 
-    lista_miast, 
-    index=startowy_index,
-    label_visibility="collapsed" 
-)
+    wybrane_miasto_radio = st.sidebar.radio(
+        "Kierunki:", 
+        lista_miast, 
+        index=startowy_index,
+        label_visibility="collapsed"
+    )
 
-if wybrane_miasto_radio and wybrane_miasto_radio != aktualny_widok:
-    st.query_params["widok"] = wybrane_miasto_radio
-    st.rerun()
-
+    if wybrane_miasto_radio and wybrane_miasto_radio != aktualny_widok:
+        st.query_params["widok"] = wybrane_miasto_radio
+        st.rerun()
 if aktualny_widok == "Ekran Główny":
     st.title("Witamy w Radarze Okazji Lotniczych! 🌍")
     st.markdown("""
