@@ -34,7 +34,7 @@ df = wczytaj_dane()
 
 def generuj_wnioski_ai(df, miasto):
     if len(df) < 10:
-        return "Zbyt mało danych, aby wirtualny asystent mógł wyciągnąć wiarygodne wnioski."
+        return "Zbyt mało danych, aby wyciągnąć wiarygodne wnioski."
     
     min_cena = df['cena'].min()
     srednia_cena = df['cena'].mean()
@@ -45,14 +45,14 @@ def generuj_wnioski_ai(df, miasto):
     
     srodek_zlotego_okna = int(tanie_loty['dni_do_wylotu'].median())
     
-    tekst = f"🤖 **Wirtualny Analityk:** Przeanalizowałem {len(df)} lotów do {miasto}. Z moich obliczeń wynika, że najtańsze bilety do miasta **{miasto}** (nawet za {min_cena} PLN) pojawiają się zazwyczaj na około **{srodek_zlotego_okna} dni przed wylotem**. Celując w to okienko, oszczędzasz średnio **{int(oszczednosc)} PLN** w stosunku do normalnej ceny. "
+    tekst = f"**Wirtualny Analityk:** Przeanalizowałem {len(df)} lotów do {miasto}. Z moich obliczeń wynika, że najtańsze bilety do miasta **{miasto}** (nawet za {min_cena} PLN) pojawiają się zazwyczaj na około **{srodek_zlotego_okna} dni przed wylotem**. Celując w to okienko, oszczędzasz średnio **{int(oszczednosc)} PLN** w stosunku do normalnej ceny. "
     
     if srodek_zlotego_okna < 14:
         tekst += "*Rekomendacja: Na tej trasie opłaca się czekać na Last Minute!*"
     elif srodek_zlotego_okna > 50:
         tekst += "*Rekomendacja: Przewoźnik wyraźnie promuje zakupy z dużym wyprzedzeniem (First Minute). Kupuj wcześnie!*"
     else:
-        tekst += "*Rekomendacja: Klasyczny środek sezonu zakupowego. Nie czekaj do ostatniej chwili, ale też nie kupuj z półrocznym wyprzedzeniem.*"
+        tekst += "*Rekomendacja: Klasyczny środek sezonu zakupowego. Nie czekaj do ostatniej chwili, ale też nie kupuj z dużym wyprzedzeniem.*"
         
     return tekst
 
@@ -100,7 +100,7 @@ else:
         st.query_params["widok"] = wybrane_miasto_radio
         st.rerun()
 if aktualny_widok == "Ekran Główny":
-    st.title("Witamy w Radarze Okazji Lotniczych! 🌍")
+    st.title("Witamy w Radarze Okazji Lotniczych!")
     st.markdown("""
     Ten zaawansowany system analityczny codziennie monitoruje i zapisuje ceny biletów lotniczych.
     Dzięki zebranym danym, potrafimy przewidzieć, kiedy najlepiej kupić bilet, 
@@ -118,9 +118,9 @@ if aktualny_widok == "Ekran Główny":
     else:
         c3.metric("Najtańszy lot w systemie", "Brak")
         
-    st.info("👈 **Aby rozpocząć, wybierz interesujący Cię kierunek z menu po lewej stronie!**")
+    st.info("**Aby rozpocząć, wybierz interesujący Cię kierunek z menu po lewej stronie!**")
     
-    st.image("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", 
+    st.image("https://th.bing.com/th/id/R.8e9da6c491456e0b47f5a8d89ce474fa?rik=KBz%2fVDiNo5%2fkpQ&riu=http%3a%2f%2f3.bp.blogspot.com%2f-oBPICFyGTtE%2fU2JTO-A2oDI%2fAAAAAAAAG3w%2f47TJ8EIcdbE%2fs1600%2fpalmy.jpg&ehk=fY4G3D%2fVgJInZQ3ZTs%2bS81Xi0ULNVSTfeGp9aeXFrkk%3d&risl=&pid=ImgRaw&r=0", 
             use_container_width=True)
 else:
     wybrane_miasto = aktualny_widok
@@ -153,13 +153,13 @@ else:
 
     with tab1:
         st.plotly_chart(fig, width="stretch", key="wykres_glowny_viridis")
-        st.info("💡 Wskazówka: Linia trendu pokazuje 'Złote Okno'. Jeśli opada w lewo, oznacza to, że im bliżej lotu, tym jest drożej.")
+        st.info("Wskazówka: Linia trendu pokazuje 'Złote Okno'. Jeśli opada w lewo, oznacza to, że im bliżej lotu, tym jest drożej.")
         st.markdown("---") 
-        with st.expander("🤖 Zapytaj Wirtualnego Analityka o poradę"):
+        with st.expander("Zapytaj Wirtualnego Analityka o poradę"):
             wnioski = generuj_wnioski_ai(filtered_df, wybrane_miasto)
             st.success(wnioski) 
     with tab2:
-        st.subheader("📅 Statystyki dni tygodnia")
+        st.subheader("Statystyki dni tygodnia")
         df_tydzien = df[df['kierunek'] == wybrane_miasto].copy()            
         dni_pl = {'Monday': 'Poniedziałek', 'Tuesday': 'Wtorek', 'Wednesday': 'Środa', 
                 'Thursday': 'Czwartek', 'Friday': 'Piątek', 'Saturday': 'Sobota', 'Sunday': 'Niedziela'}
