@@ -1,11 +1,11 @@
 @echo off
 echo --- START ---
 
-cd /d "%~dp0"
+set PROJEKT_DIR=%~dp0
 
-call .venv\Scripts\activate.bat
+cd /d "%PROJEKT_DIR%zaliczenie"
 
-cd zaliczenie
+"%PROJEKT_DIR%.venv\Scripts\python.exe" -m scrapy crawl ryanair
 
-scrapy crawl ryanair
-
+echo --- KONIEC ---
+pause
